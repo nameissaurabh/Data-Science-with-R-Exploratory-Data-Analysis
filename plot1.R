@@ -1,0 +1,6 @@
+data <- subset(read.table("E:/coursera/data science with r/exdata_data_household_power_consumption/household_power_consumption.txt",header = TRUE,sep = ";"),Date %in% c("1/2/2007","2/2/2007"))
+timedate <- strptime(paste(data$Date, data$Time, sep=" "), "%d/%m/%Y %H:%M:%S")
+data <- cbind(data, timedate)
+png("plot1.png",width=480,height=480)
+hist(as.numeric(data$Global_active_power),xlab = "Global Active power(kilowatts)",col = "red",main = "Global Active Power")
+dev.off()
